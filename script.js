@@ -15,7 +15,7 @@ function randomAlphabet() {
   const alphabetString = "abcdefghijklmnopqrstuvwxyz";
   const alphabets = alphabetString.split("");
   const randomNumber = Math.random() * 25;
-  const index = Math.floor(randomNumber);
+  const index = Math.round(randomNumber);
   const alphabet = alphabets[index];
   setBackgroundColoById(alphabet);
   return alphabet;
@@ -27,6 +27,7 @@ function randomAlphabet() {
 function continueGame() {
   // Step 1: Get a random alphabet
   const randomLetter = randomAlphabet();
+  // console.log("your random alphabet is", randomLetter);
 
   // Step 2: Display the random alphabet in the play ground
   const playGround = document.getElementById("play-ground");
@@ -43,6 +44,42 @@ function play() {
 }
 function handleKeyBoard(e) {
   const playerPressed = e.key;
-  console.log(playerPressed);
+
+  // get the expected letter to press
+  const currentAlphabet = document.querySelector(".artboard .flex .text-8xl");
+  const expectedAlphabet = currentAlphabet.innerText;
+  if (playerPressed === expectedAlphabet) {
+    // console.log("Wow you got a letter");
+    // Update Score :
+    // get the current score
+    const currentScoreElement = document.getElementById("current-score");
+    const currentScoreText = currentScoreElement.innerText;
+    const currentScore = parseInt(currentScoreText);
+    console.log(currentScore);
+
+    // increase the score by 1
+    const newScore = currentScore + 1;
+    // show the score live
+    currentScoreElement.innerText = newScore;
+
+    // start the new game
+    removeBackgroundColorById(expectedAlphabet);
+    continueGame();
+  } else {
+    const newLifeElement = document.getElementById("current-life");
+    const newLifeText = newLifeElement.innerText;
+    const newLifeNumber = parseInt(newLifeText);
+    const newLife = newLifeNumber - 1;
+    newLifeElement.innerText = newLife;
+    if (newLife === 0) {
+      const playEnd = document.getElementById("play-end");
+
+      playEndSection(playEnd);
+    }
+
+    console.log(playEnd);
+  }
+
+  // console.log(playerPressed, expectedAlphabet);
 }
 document.addEventListener("keyup", handleKeyBoard);

@@ -47,11 +47,15 @@
           >
             <div class="flex justify-center">
               <p class="bg-[#2F2941] px-4 pb-4 rounded-b-xl">
-                Don't watch keyboard while playing...
+                <span class="text-zinc-50"
+                  >Don't watch keyboard while playing...</span
+                >
               </p>
             </div>
             <div class="flex justify-center items-center h-full">
-              <p class="text-8xl text-black font-bold">Y</p>
+              <p id="current-alphabet" class="text-8xl text-black font-bold">
+                Y
+              </p>
             </div>
           </div>
         </div>
@@ -96,17 +100,18 @@
           <button class="btn rounded-3xl bg-[#894189] text-white">
             Life
             <img src="images/heart.svg" alt="" />
-            <span>1</span>
+            <span id="current-life">10</span>
           </button>
           <button class="btn rounded-3xl bg-[#360490] text-white">
             Score
             <img src="images/dollar.svg" alt="" />
-            <span>1</span>
+            <span id="current-score">0</span>
           </button>
         </div>
       </section>
       <!-- Score Section -->
       <section
+        id="play-end"
         class="flex justify-center items-center text-center min-h-screen hidden"
       >
         <div class="score space-y-4">
@@ -120,7 +125,9 @@
         </div>
       </section>
     </main>
-    <script src="script.js"></script>
-    <script src="utility.js"></script>
+    <!-- <script src="script.js"></script>
+    <script src="utility.js"></script> -->
+
+    <script src="helping.js"></script>
   </body>
 </html>
